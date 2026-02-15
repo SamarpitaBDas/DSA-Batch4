@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <unordered_map>
 using namespace std;
-//optimized version
+//optimized version - using hashmap
 vector<int> twoSum(vector<int> & nums, int target){
     unordered_map<int,int> NumMap;
     for(int i=0;i<nums.size();i++){
