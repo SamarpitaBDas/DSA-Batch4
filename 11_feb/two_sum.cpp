@@ -10,6 +10,14 @@ for(int i=0;i<nums.size();i++){
     return {};
 }
 //hashmap approach
-
+unordered_map<int,int> N;
+for(int i=0;i<nums.size();i++){
+    int c = target-nums[i];
+    if(N.find(c)!=N.end()){
+        return {N[c],i};
+    }
+    N[nums[i]]=i;
+}
+return {};
 
 
