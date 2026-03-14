@@ -24,19 +24,19 @@ vector<int> sortColors(vector<int>& colors){
 
     //optimal approach
     int l=0,m=0,h=colors.size()-1;
-    while(m<h){
+    while(m<=h){
         if(colors[m]==0){
             int t=colors[m];
             colors[m++]=colors[l];
             colors[l++]=t;
         }
-        if(colors[m]==1){
+        else if(colors[m]==1){
             m++;
         }
-        if(colors[m]==2){
+        else{
             int t=colors[h];
             colors[h--]=colors[m];
-            colors[m++]=t;
+            colors[m]=t;
         }
 
     }
