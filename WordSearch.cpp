@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+class Solution {
+public:
+    bool backtrack(vector<vector<char>>& board, string word, int i, int j, int idx){
+        if(idx == word.size()) return true;
+        int m = board.size();
+        int n = board[0].size();
+        if(i<0 || j<0 || i>=m || j>=n || board[i][j]!=word[idx]) return false;
+        char temp = board[i][j];
+        board[i][j]='#';
+        bool found = backtrack(board, word, i+1,j,idx+1) ||
+        backtrack(board, word, i-1,j,idx+1)||
+        backtrack(board, word, i,j+1,idx+1)||
+        backtrack(board, word, i,j-1,idx+1);
+        board[i][j]= temp;
+        return found;
+
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        int m = board.size();
+        int n = board[0].size();
+        for(int i=0;i<m;i++){
+            for(int j =0;j<n;j++){
+                if(backtrack(board, word, i,j,0)) return true;
+            }
+        }
+        return false;
+    }
+};
+int main(){
+    vector<vector<char>> board = {
+        {'A','B','C','E'},
+        {'S','F','C','S'},
+        {'A','D','E','E'}
+    };
+    string word = "ABCCED";
+    Solution sol;
+    bool result = sol.exist(board, word);
+    cout << "Word exists in board: " << (result ? "true" : "false") << endl;
+    return 0;
+}
