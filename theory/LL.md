@@ -24,7 +24,7 @@ struct Node {
 
 ---
 
-# ✅ Advantages of Linked List
+# Advantages of Linked List
 
 ### 1. Dynamic Size
 
